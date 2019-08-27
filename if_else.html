@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vue From Scratch</title>
+    <title>Binding Data and Simple To Do Example</title>
 </head>
 <body>
+
     <div id="app">
-        <h1 v-bind:title="menu">{{ title }}</h1>
 
-        <p v-text="content"></p>
-
-        <input type="text" v-model="content">
 
     </div>
 
@@ -24,9 +21,7 @@
         new Vue({
             el: '#app',
             data: {
-                title: 'My Title',
-                content: 'This is my content',
-                menu: 'My Menu data here',
+
             }
         });
     </script>
