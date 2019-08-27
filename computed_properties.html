@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Binding Data and Simple To Do Example</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="number" v-model="price">
+        <h2>Price : {{ price }}</h2>
+        <h2 v-if="price == 0">Tax : 0</h2>
+        <h2 v-else>Tax : {{ taxFormatted }}</h2>
+        <h2 v-if="price == 0">Total : 0</h2>
+        <h2 v-else>Total : {{ totalFormatted }} </h2>
+
+    </div>
+
+
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                price: 100,
+            },
+            computed: {
+                tax: function () {
+                    return parseInt(this.price) * 0.2;
+                },
+
+                taxFormatted: function() {
+                    return '$' + this.tax;
+                },
+
+                total: function () {
+                    return parseInt(this.price) + this.tax;
+                },
+
+                totalFormatted: function() {
+                    return '$' + this.total;
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
