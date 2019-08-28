@@ -10,9 +10,9 @@
         <input type="number" v-model="price">
         <h2>Price : {{ price }}</h2>
         <h2 v-if="price == 0">Tax : 0</h2>
-        <h2 v-else>Tax : {{ taxFormatted }}</h2>
+        <h2 v-else>Tax : {{ moneyFormat(tax) }}</h2>
         <h2 v-if="price == 0">Total : 0</h2>
-        <h2 v-else>Total : {{ totalFormatted }} </h2>
+        <h2 v-else>Total : {{ moneyFormat(total) }} </h2>
 
     </div>
 
@@ -28,22 +28,20 @@
             data: {
                 price: 100,
             },
+
+            methods: {
+                moneyFormat: function (price) {
+                    return '$' + price;
+                }
+            },
             computed: {
                 tax: function () {
                     return parseInt(this.price) * 0.2;
                 },
-
-                taxFormatted: function() {
-                    return '$' + this.tax;
-                },
-
                 total: function () {
                     return parseInt(this.price) + this.tax;
                 },
 
-                totalFormatted: function() {
-                    return '$' + this.total;
-                },
             }
         });
     </script>
